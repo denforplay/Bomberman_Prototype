@@ -25,18 +25,18 @@ namespace Models
         {
             var cellPosDefault = _spawnTileMap.WorldToCell(transform.position);
             var cellPosCenter = _spawnTileMap.GetCellCenterWorld(cellPosDefault);
-            if (_spawnTileMap.GetColliderType(cellPosDefault) == Tile.ColliderType.Sprite)
+            if (_spawnTileMap.GetColliderType(cellPosDefault) == Tile.ColliderType.None)
             {
                 Debug.Log("Bomb has been planted");
                 var bomb = Instantiate(_bomb, _bombsContainer.transform);
                 GameObject.Destroy(bomb, 5f);
                 bomb.OnDestroyAsObservable().Subscribe(_ =>
                 {
-                    _spawnTileMap.SetColliderType(cellPosDefault, Tile.ColliderType.Sprite);
+                    _spawnTileMap.SetColliderType(cellPosDefault, Tile.ColliderType.None);
                 });
                 
                 bomb.transform.position = cellPosCenter;
-                _spawnTileMap.SetColliderType(cellPosDefault, Tile.ColliderType.None);
+                _spawnTileMap.SetColliderType(cellPosDefault, Tile.ColliderType.Sprite);
             }
         }
     }

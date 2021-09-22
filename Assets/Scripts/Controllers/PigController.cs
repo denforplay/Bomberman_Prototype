@@ -23,14 +23,12 @@ namespace Controllers
         private void FixedUpdate()
         {
             Vector2 moveInput = _defaultControls.Player.Move.ReadValue<Vector2>();
-            _rigidbody.velocity = moveInput * _speed;
-
-            if (Application.platform == RuntimePlatform.Android)
-            {
-                moveInput = _defaultControls.Player.VJMove.ReadValue<Vector2>();
+            if (moveInput!=Vector2.zero)
                 _rigidbody.velocity = moveInput * _speed;
-            }
             
+            moveInput = _defaultControls.Player.VJMove.ReadValue<Vector2>();
+            if (moveInput!=Vector2.zero)
+                _rigidbody.velocity = moveInput * _speed;
         }
 
         private void OnEnable()

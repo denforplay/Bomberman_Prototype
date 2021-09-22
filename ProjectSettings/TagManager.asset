@@ -13,8 +13,8 @@ TagManager:
   - 
   - Water
   - UI
-  - GameBorders
-  - Bomb
+  - Players
+  - GameMap
   - 
   - 
   - 
@@ -42,7 +42,4 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
-    locked: 0
-  - name: GamingTileMap
-    uniqueID: 1122578883
     locked: 0
