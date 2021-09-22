@@ -61,9 +61,8 @@ namespace Controllers
 
         private void OnCollisionEnter2D(Collision2D other)
         {
-            if (other.gameObject.TryGetComponent(out GameBorders gameBorders))
+            if (other.gameObject.TryGetComponent(out GameBorders gameBorders) || other.gameObject.TryGetComponent(out Bomb bomb))
             {
-                Debug.Log("Collision detected");
                 DOTween.Kill(_enemyRigidbody.transform);
                 _enemyRigidbody.transform.position = _previousPosition;
                 Move(true);

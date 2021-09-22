@@ -13,7 +13,8 @@ namespace Controllers
         private DefaultControls _defaultControls;
         private void Awake()
         {
-            Observable.EveryUpdate()
+            Observable
+                .EveryUpdate()
                 .Where(_ => _defaultControls.Player.Enter.triggered)
                 .Subscribe(_ => _pig.SetBomb());
             _rigidbody.freezeRotation = true;

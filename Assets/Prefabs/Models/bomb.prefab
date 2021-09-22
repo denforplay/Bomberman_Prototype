@@ -123,5 +123,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 900ed27c55cd4f5db1046a0daae1a113, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bombParticle: {fileID: 4328842359968402334, guid: 5e9b8a81660eadb4a859cf688854f340, type: 3}
+  _bombParticle: {fileID: -6812178220934052829, guid: 5e9b8a81660eadb4a859cf688854f340, type: 3}
+  _particlesContainer: {fileID: 8651064042057610954, guid: 5e9b8a81660eadb4a859cf688854f340, type: 3}
   _collider: {fileID: 2245945102183716638}
+  _bombsDistance: 2
