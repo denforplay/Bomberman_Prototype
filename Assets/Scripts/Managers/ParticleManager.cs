@@ -27,6 +27,7 @@ namespace Managers
         
         private void Start()
         {
+            
             _particlePools = new Dictionary<Type, IObjectPool<BaseParticle>>();
 
             foreach (var prefab in _prefabs)

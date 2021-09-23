@@ -3806,6 +3806,7 @@ GameObject:
   - component: {fileID: 727078872}
   - component: {fileID: 727078874}
   - component: {fileID: 727078873}
+  - component: {fileID: 727078875}
   m_Layer: 6
   m_Name: Enemy
   m_TagString: Untagged
@@ -3928,6 +3929,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2d1f8ec1a4a4af7ae0f82fea09f2d75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anim: {fileID: 727078875}
   _curve:
     serializedVersion: 2
     m_Curve:
@@ -3967,6 +3969,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9171720c6ce243eea2fc6d9b9f9fd3e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _sprite: {fileID: 0}
+  _bombedSprite: {fileID: 0}
+--- !u!95 &727078875
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 727078868}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b22964ecc9176b24abb06d46a969fe4f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &745609235
 GameObject:
   m_ObjectHideFlags: 0
@@ -4533,6 +4556,7 @@ GameObject:
   - component: {fileID: 2087101331}
   - component: {fileID: 2087101329}
   - component: {fileID: 2087101332}
+  - component: {fileID: 2087101333}
   m_Layer: 6
   m_Name: Pig
   m_TagString: Untagged
@@ -4639,6 +4663,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3625b09c89e74449aa2cae3d358c03e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _pigMovementAnimator: {fileID: 2087101333}
   _pig: {fileID: 2087101332}
   _rigidbody: {fileID: 2087101329}
   _speed: 5
@@ -4673,3 +4698,22 @@ MonoBehaviour:
   _bombsContainer: {fileID: 1357772725}
   _gameTilemap: {fileID: 707604793}
   _bomb: {fileID: 2245945102183716639, guid: 6d6f9bda5e0587b498b01ba92fd6b13d, type: 3}
+--- !u!95 &2087101333
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2087101326}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 873331fdc5f81fd47b51833367b5cf2d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

@@ -10,6 +10,10 @@ namespace Controllers
 {
     public class EnemyController : MonoBehaviour
     {
+        private readonly int X = Animator.StringToHash("x");
+        private readonly int Y = Animator.StringToHash("y");
+        private readonly int IsWalking = Animator.StringToHash("IsWalking");
+        [SerializeField] private Animator anim;
         [SerializeField] private AnimationCurve _curve;
         [SerializeField] private Tilemap _gameTilemap;
         [SerializeField] private Enemy _enemy;
@@ -18,6 +22,7 @@ namespace Controllers
         private Tween _movingTween;
         private Vector2 _previousDirection;
         private Vector3 _previousPosition;
+
         private void Awake()
         {
             _enemyRigidbody.freezeRotation = true;
@@ -46,6 +51,10 @@ namespace Controllers
             var nextCellPos = _gameTilemap.WorldToCell(nextPosition);
             if (_gameTilemap.GetColliderType(nextCellPos) == Tile.ColliderType.None)
             {
+                anim.SetFloat(X, direction.x);
+                anim.SetFloat(Y, direction.y);
+                anim.SetBool(IsWalking,true);
+                
                 _previousDirection = direction;
                 Tween tween = _enemyRigidbody.transform
                     .DOMove(nextPosition, 1f)
