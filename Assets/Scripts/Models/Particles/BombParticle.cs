@@ -1,4 +1,5 @@
 ﻿using System;
+using Controllers;
 using Cysharp.Threading.Tasks;
 using Models.Abstracts;
 using Plugins.Pool.Interfaces;
@@ -11,18 +12,14 @@ namespace Models.Particles
     public class BombParticle : BaseParticle, IPoolable
     {
         [SerializeField] private ParticleSystem _bombParticle;
+        public IObjectPool Origin { get; set; }
         
-        async UniTaskVoid RemoveAfterSeconds(TimeSpan time)
+        private async UniTaskVoid RemoveAfterSeconds(TimeSpan time)
         {
             await UniTask.Delay(time, ignoreTimeScale: false);
             gameObject.SetActive(false);
         }
-
-        public IObjectPool Origin { get; set; }
-        public void ReturnToPool()
-        {
-        }
-        
+                
         private void OnEnable()
         {
             _bombParticle.Play();
@@ -36,7 +33,20 @@ namespace Models.Particles
 
         private void OnTriggerEnter2D(Collider2D other)
         {
+            if (other.gameObject.TryGetComponent(out Enemy enemy))
+            {
+                GameObject.Destroy(enemy.gameObject);
+            }
+
+            if (other.gameObject.TryGetComponent(out PigController pig))
+            {
+                pig.DecreaseSpeed(0.5f);
+            }
             Debug.Log("Boom collide with " + other.gameObject);
+        }
+        
+        public void ReturnToPool()
+        {
         }
 
         public class BombParticleFactory : PlaceholderFactory<BombParticle>

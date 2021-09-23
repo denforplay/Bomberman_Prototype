@@ -60,6 +60,7 @@ namespace Models
         
         private void OnTriggerExit2D(Collider2D other)
         {
+
             _collider.isTrigger = false;
         }
         

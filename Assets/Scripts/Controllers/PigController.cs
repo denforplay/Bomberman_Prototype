@@ -14,8 +14,17 @@ namespace Controllers
         [SerializeField] private Pig _pig;
         [SerializeField] private Rigidbody2D _rigidbody;
         [SerializeField] private float _speed;
+        [SerializeField] private float _minSpeed;
         private DefaultControls _defaultControls;
 
+        public void DecreaseSpeed(float value)
+        {
+            if (_speed > _minSpeed + value)
+            {
+                _speed -= value;
+            }
+        }
+        
         private void Awake()
         {
             Observable

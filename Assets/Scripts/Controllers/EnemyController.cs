@@ -1,7 +1,5 @@
-﻿using System;
-using DG.Tweening;
+﻿using DG.Tweening;
 using Models;
-using UniRx;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using Random = UnityEngine.Random;
@@ -13,7 +11,7 @@ namespace Controllers
         private readonly int X = Animator.StringToHash("x");
         private readonly int Y = Animator.StringToHash("y");
         private readonly int IsWalking = Animator.StringToHash("IsWalking");
-        [SerializeField] private Animator anim;
+        [SerializeField] private Animator _farmerAnimator;
         [SerializeField] private AnimationCurve _curve;
         [SerializeField] private Tilemap _gameTilemap;
         [SerializeField] private Enemy _enemy;
@@ -46,14 +44,15 @@ namespace Controllers
             {
                 direction = _directions[Random.Range(0, _directions.Length)];
             }
-            
-            var nextPosition = new Vector2(_enemyRigidbody.transform.position.x + direction.x, _enemyRigidbody.transform.position.y + direction.y);
+
+            var enemyPos = _enemyRigidbody.transform.position;
+            var nextPosition = new Vector2(enemyPos.x + direction.x, enemyPos.y + direction.y);
             var nextCellPos = _gameTilemap.WorldToCell(nextPosition);
             if (_gameTilemap.GetColliderType(nextCellPos) == Tile.ColliderType.None)
             {
-                anim.SetFloat(X, direction.x);
-                anim.SetFloat(Y, direction.y);
-                anim.SetBool(IsWalking,true);
+                _farmerAnimator.SetFloat(X, direction.x);
+                _farmerAnimator.SetFloat(Y, direction.y);
+                _farmerAnimator.SetBool(IsWalking,true);
                 
                 _previousDirection = direction;
                 Tween tween = _enemyRigidbody.transform
@@ -76,6 +75,11 @@ namespace Controllers
                 _enemyRigidbody.transform.position = _previousPosition;
                 Move(true);
             }
+        }
+
+        private void OnDestroy()
+        {
+            DOTween.Kill(transform);
         }
     }
 }
