@@ -42,7 +42,6 @@ namespace Models.Particles
             {
                 pig.DecreaseSpeed(0.5f);
             }
-            Debug.Log("Boom collide with " + other.gameObject);
         }
         
         public void ReturnToPool()

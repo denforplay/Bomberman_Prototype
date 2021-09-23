@@ -25,8 +25,8 @@ namespace Models
             var cellPosCenter = _gameTilemap.GetCellCenterWorld(cellPosDefault);
             if (_gameTilemap.GetColliderType(cellPosDefault) == Tile.ColliderType.None)
             {
-                Debug.Log("Bomb has been planted");
                 var bomb = _bombFactory.Create();
+                bomb.transform.SetParent(_bombsContainer.transform);
                 bomb.transform.position = transform.position;
                 if (bomb.TryGetComponent(out Bomb bombObject))
                 {
